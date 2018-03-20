@@ -143,6 +143,39 @@ def extract_file_config(content):
     return file_conf
 
 
+def strip_ignore_code(code_block):
+    """Remove ignore code_blocks
+
+    Returns
+    -------
+    stripped_code : str
+        code_block with segments wrapped in the strings
+        'begin-gallery-ignore' and 'end-gallery-ignore'
+        removed
+    """
+    ignore_begin = "begin-gallery-ignore"
+    ignore_end = "end-gallery-ignore"
+
+    begin_re = re.compile('^# %s.*' % ignore_begin, flags=re.M)
+    end_re = re.compile('^# %s.*\n' % ignore_end, flags=re.M)
+    match = begin_re.search(code_block)
+    curr_pos = 0
+    stripped_code = ""
+    while match:
+        stripped_code += code_block[curr_pos:match.start()]
+        curr_pos = match.end()
+        match = end_re.search(code_block, curr_pos)
+        if match:
+            curr_pos = match.end()
+            match = begin_re.search(code_block, curr_pos)
+        else:
+            curr_pos = -1
+            break
+    if curr_pos > 0:
+        stripped_code += code_block[curr_pos:]
+    return stripped_code
+
+
 def split_code_and_text_blocks(source_file):
     """Return list with source file separated into code and text blocks.
 
@@ -167,7 +200,9 @@ def split_code_and_text_blocks(source_file):
 
     pos_so_far = 0
     for match in re.finditer(pattern, rest_of_content):
-        code_block_content = rest_of_content[pos_so_far:match.start()]
+        code_block_content = strip_ignore_code(
+                                rest_of_content[pos_so_far:match.start()]
+                             )
         if code_block_content.strip():
             blocks.append(('code', code_block_content, lineno))
         lineno += code_block_content.count('\n')
