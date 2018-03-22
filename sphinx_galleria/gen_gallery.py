@@ -90,7 +90,7 @@ def parse_config(app):
         plot_gallery = bool(app.builder.config.plot_gallery)
 
     gallery_conf = copy.deepcopy(DEFAULT_GALLERY_CONF)
-    gallery_conf.update(app.config.sphinx_gallery_conf)
+    gallery_conf.update(app.config.sphinx_galleria_conf)
     gallery_conf.update(plot_gallery=plot_gallery)
     gallery_conf.update(
         abort_on_example_error=app.builder.config.abort_on_example_error)
@@ -111,7 +111,7 @@ def parse_config(app):
             type=DeprecationWarning)
 
     # this assures I can call the config in other places
-    app.config.sphinx_gallery_conf = gallery_conf
+    app.config.sphinx_galleria_conf = gallery_conf
     app.config.html_static_path.append(glr_path_static())
 
     return gallery_conf
@@ -147,7 +147,7 @@ def get_subsections(srcdir, examples_dir, sortkey):
 
 
 def _prepare_sphx_glr_dirs(gallery_conf, srcdir):
-    """Creates necessary folders for sphinx_gallery files """
+    """Creates necessary folders for sphinx_galleria files """
     examples_dirs = gallery_conf['examples_dirs']
     gallery_dirs = gallery_conf['gallery_dirs']
 
@@ -253,11 +253,11 @@ def touch_empty_backreferences(app, what, name, obj, options, lines):
     This avoids inclusion errors/warnings if there are no gallery
     examples for a class / module that is being parsed by autodoc"""
 
-    if not bool(app.config.sphinx_gallery_conf['backreferences_dir']):
+    if not bool(app.config.sphinx_galleria_conf['backreferences_dir']):
         return
 
     examples_path = os.path.join(app.srcdir,
-                                 app.config.sphinx_gallery_conf[
+                                 app.config.sphinx_galleria_conf[
                                      "backreferences_dir"],
                                  "%s.examples" % name)
 
@@ -275,10 +275,10 @@ def sumarize_failing_examples(app, exception):
         return
 
     # Under no-plot Examples are not run so nothing to summarize
-    if not app.config.sphinx_gallery_conf['plot_gallery']:
+    if not app.config.sphinx_galleria_conf['plot_gallery']:
         return
 
-    gallery_conf = app.config.sphinx_gallery_conf
+    gallery_conf = app.config.sphinx_galleria_conf
     failing_examples = set(gallery_conf['failing_examples'].keys())
     expected_failing_examples = set([os.path.normpath(os.path.join(app.srcdir, path))
                                      for path in
@@ -307,7 +307,7 @@ def sumarize_failing_examples(app, exception):
     if examples_not_expected_to_pass:
         fail_msgs.append("Examples expected to fail, but not failling:\n" +
                          "Please remove these examples from\n" +
-                         "sphinx_gallery_conf['expected_failing_examples']\n" +
+                         "sphinx_galleria_conf['expected_failing_examples']\n" +
                          "in your conf.py file"
                          "\n".join(examples_not_expected_to_pass))
 
@@ -349,7 +349,7 @@ def check_duplicate_filenames(files):
 
 def get_default_config_value(key):
     def default_getter(conf):
-        return conf['sphinx_gallery_conf'].get(key, DEFAULT_GALLERY_CONF[key])
+        return conf['sphinx_galleria_conf'].get(key, DEFAULT_GALLERY_CONF[key])
     return default_getter
 
 
@@ -357,7 +357,7 @@ def setup(app):
     """Setup sphinx-gallery sphinx extension"""
     sphinx_compatibility._app = app
 
-    app.add_config_value('sphinx_gallery_conf', DEFAULT_GALLERY_CONF, 'html')
+    app.add_config_value('sphinx_galleria_conf', DEFAULT_GALLERY_CONF, 'html')
     for key in ['plot_gallery', 'abort_on_example_error']:
         app.add_config_value(key, get_default_config_value(key), 'html')
 

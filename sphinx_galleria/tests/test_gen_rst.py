@@ -18,10 +18,10 @@ import zipfile
 
 import pytest
 
-import sphinx_gallery.gen_rst as sg
-from sphinx_gallery import gen_gallery, downloads
-from sphinx_gallery.gen_gallery import generate_dir_rst
-from sphinx_gallery.utils import _TempDir
+import sphinx_galleria.gen_rst as sg
+from sphinx_galleria import gen_gallery, downloads
+from sphinx_galleria.gen_gallery import generate_dir_rst
+from sphinx_galleria.utils import _TempDir
 
 # Need to import gen_rst before matplotlib.pyplot to set backend to 'Agg'
 import matplotlib.pyplot as plt
@@ -69,7 +69,7 @@ def test_bug_cases_of_notebook_syntax():
     """Test over the known requirements of supported syntax in the
     notebook styled comments"""
 
-    with open('sphinx_gallery/tests/reference_parse.txt') as reference:
+    with open('sphinx_galleria/tests/reference_parse.txt') as reference:
         ref_blocks = ast.literal_eval(reference.read())
         file_conf, blocks = sg.split_code_and_text_blocks(
             'tutorials/plot_parse.py')
@@ -263,10 +263,10 @@ def test_pattern_matching(gallery_conf, log_collector):
 
 
 @pytest.mark.parametrize('test_str', [
-    '# sphinx_gallery_thumbnail_number= 2',
-    '# sphinx_gallery_thumbnail_number=2',
-    '#sphinx_gallery_thumbnail_number = 2',
-    '    # sphinx_gallery_thumbnail_number=2'])
+    '# sphinx_galleria_thumbnail_number= 2',
+    '# sphinx_galleria_thumbnail_number=2',
+    '#sphinx_galleria_thumbnail_number = 2',
+    '    # sphinx_galleria_thumbnail_number=2'])
 def test_thumbnail_number(test_str):
     # which plot to show as the thumbnail image
     with tempfile.NamedTemporaryFile('w', delete=False) as f:

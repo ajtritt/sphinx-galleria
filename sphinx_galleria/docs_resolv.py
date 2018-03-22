@@ -393,7 +393,7 @@ def embed_code_links(app, exception):
 
     logger.info('embedding documentation hyperlinks...', color='white')
 
-    gallery_conf = app.config.sphinx_gallery_conf
+    gallery_conf = app.config.sphinx_galleria_conf
 
     gallery_dirs = gallery_conf['gallery_dirs']
     if not isinstance(gallery_dirs, list):

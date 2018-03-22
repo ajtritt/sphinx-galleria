@@ -12,7 +12,7 @@ version.
 
 import numpy as np
 import matplotlib.pyplot as plt
-import sphinx_gallery
+import sphinx_galleria
 
 np.random.seed(32)
 
@@ -42,7 +42,7 @@ for mixture in d.T:
     mixture[[0, -1]] = 0.
     plt.fill(x, mixture, alpha=0.9)
 
-plt.annotate('Introducing Sphinx-Gallery ' + sphinx_gallery.__version__,
+plt.annotate('Introducing Sphinx-Gallery ' + sphinx_galleria.__version__,
              xy=(12, 4), arrowprops=dict(arrowstyle='->'), xytext=(22, 6))
 
 plt.xticks([])

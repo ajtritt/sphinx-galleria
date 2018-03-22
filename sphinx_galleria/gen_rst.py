@@ -67,8 +67,8 @@ if matplotlib_backend != 'agg':
         "currently using the {} backend. Sphinx-Gallery will "
         "terminate the build now, because changing backends is "
         "not well supported by matplotlib. We advise you to move "
-        "sphinx_gallery imports before any matplotlib-dependent "
-        "import. Moving sphinx_gallery imports at the top of "
+        "sphinx_galleria imports before any matplotlib-dependent "
+        "import. Moving sphinx_galleria imports at the top of "
         "your conf.py file should fix this issue")
 
     raise ValueError(mpl_backend_msg.format(matplotlib_backend))
@@ -398,7 +398,7 @@ def save_thumbnail(image_path_template, src_file, file_conf, gallery_conf):
     thumbnail_number = file_conf.get('thumbnail_number', 1)
     if not isinstance(thumbnail_number, int):
         raise TypeError(
-            'sphinx_gallery_thumbnail_number setting is not a number.')
+            'sphinx_galleria_thumbnail_number setting is not a number.')
     thumbnail_image_path = image_path_template.format(thumbnail_number)
 
     thumb_dir = os.path.join(os.path.dirname(thumbnail_image_path), 'thumb')

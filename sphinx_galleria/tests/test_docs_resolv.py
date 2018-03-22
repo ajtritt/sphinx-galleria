@@ -11,8 +11,8 @@ import sys
 
 import pytest
 
-import sphinx_gallery.docs_resolv as sg
-from sphinx_gallery.utils import _TempDir
+import sphinx_galleria.docs_resolv as sg
+from sphinx_galleria.utils import _TempDir
 
 
 def test_embed_code_links_get_data():

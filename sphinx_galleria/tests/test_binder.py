@@ -12,9 +12,9 @@ from copy import deepcopy
 
 import pytest
 
-from sphinx_gallery.binder import (gen_binder_rst, gen_binder_url,
+from sphinx_galleria.binder import (gen_binder_rst, gen_binder_url,
                                    check_binder_conf)
-from sphinx_gallery.utils import _TempDir
+from sphinx_galleria.utils import _TempDir
 
 
 def test_binder():

@@ -11,7 +11,7 @@ You also get the python traceback of the failed code block
 
 # Code source: Óscar Nájera
 # License: BSD 3 clause
-# sphinx_gallery_line_numbers = True
+# sphinx_galleria_line_numbers = True
 
 import numpy as np
 import matplotlib.pyplot as plt

@@ -13,7 +13,7 @@ import pytest
 
 def test_ExplicitOrder_sorting_key():
     """Test ExplicitOrder"""
-    from sphinx_gallery.sorting import ExplicitOrder
+    from sphinx_galleria.sorting import ExplicitOrder
 
     all_folders = ['e', 'f', 'd', 'c', '01b', 'a']
     explicit_folders = ['f', 'd']

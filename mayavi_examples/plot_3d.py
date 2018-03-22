@@ -11,7 +11,7 @@ in order to test the autonomy of the gallery.
 # License: BSD 3 clause
 
 # This will show the mlab.test_mesh figure in the gallery
-# sphinx_gallery_thumbnail_number = 4
+# sphinx_galleria_thumbnail_number = 4
 
 from mayavi import mlab
 

@@ -6,7 +6,7 @@ Testing the rst files generator
 """
 from __future__ import division, absolute_import, print_function
 
-import sphinx_gallery.backreferences as sg
+import sphinx_galleria.backreferences as sg
 
 
 def test_thumbnail_div():
@@ -69,12 +69,12 @@ def test_identify_names(unicode_sample):
             {'name': 'join', 'module': 'os.path', 'module_short': 'os.path'},
         'br.identify_names':
             {'name': 'identify_names',
-             'module': 'sphinx_gallery.back_references',
-             'module_short': 'sphinx_gallery.back_references'},
+             'module': 'sphinx_galleria.back_references',
+             'module_short': 'sphinx_galleria.back_references'},
         'identify_names':
             {'name': 'identify_names',
-             'module': 'sphinx_gallery.back_references',
-             'module_short': 'sphinx_gallery.back_references'}
+             'module': 'sphinx_galleria.back_references',
+             'module_short': 'sphinx_galleria.back_references'}
     }
 
     res = sg.identify_names(unicode_sample)

@@ -11,8 +11,8 @@ import tempfile
 import os
 import pytest
 
-import sphinx_gallery.gen_rst as sg
-from sphinx_gallery.notebook import (rst2md, jupyter_notebook, save_notebook,
+import sphinx_galleria.gen_rst as sg
+from sphinx_galleria.notebook import (rst2md, jupyter_notebook, save_notebook,
                                      python_to_jupyter_cli)
 try:
     FileNotFoundError

@@ -6,7 +6,7 @@ from __future__ import division, absolute_import, print_function
 
 import sphinx.util.console
 
-from sphinx_gallery import sphinx_compatibility
+from sphinx_galleria import sphinx_compatibility
 
 
 def test_status_iterator(fakesphinxapp):

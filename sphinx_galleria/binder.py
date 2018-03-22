@@ -97,7 +97,7 @@ def gen_binder_rst(fname, binder_conf):
 
 def copy_binder_reqs(app):
     """Copy Binder requirements files to a "binder" folder in the docs."""
-    binder_conf = app.config.sphinx_gallery_conf['binder']
+    binder_conf = app.config.sphinx_galleria_conf['binder']
     path_reqs = binder_conf.get('dependencies')
 
     binder_folder = os.path.join(app.builder.outdir, 'binder')

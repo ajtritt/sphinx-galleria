@@ -1,12 +1,12 @@
-import sphinx_gallery  # noqa
-from sphinx_gallery.sorting import FileNameSortKey
+import sphinx_galleria  # noqa
+from sphinx_galleria.sorting import FileNameSortKey
 
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'sphinx_gallery.gen_gallery',
+    'sphinx_galleria.gen_gallery',
 ]
 templates_path = ['_templates']
 autosummary_generate = True
@@ -19,10 +19,10 @@ intersphinx_mapping = {
     'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
     'matplotlib': ('https://matplotlib.org/', None),
 }
-sphinx_gallery_conf = {
-    'doc_module': ('sphinx_gallery',),
+sphinx_galleria_conf = {
+    'doc_module': ('sphinx_galleria',),
     'reference_url': {
-        'sphinx_gallery': None,
+        'sphinx_galleria': None,
         },
     'examples_dirs': ['examples'],
     'gallery_dirs': ['auto_examples'],

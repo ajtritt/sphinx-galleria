@@ -126,7 +126,7 @@ def extract_file_config(content):
     """
 
     prop_pat = re.compile(
-        r"^\s*#\s*sphinx_gallery_([A-Za-z0-9_]+)\s*=\s*(.+)\s*$",
+        r"^\s*#\s*sphinx_galleria_([A-Za-z0-9_]+)\s*=\s*(.+)\s*$",
         re.MULTILINE)
     file_conf = {}
     for match in re.finditer(prop_pat, content):
@@ -150,7 +150,7 @@ def split_code_and_text_blocks(source_file):
     -------
     file_conf : dict
         File-specific settings given in comments as:
-        ``# sphinx_gallery_<name> = <value>``
+        ``# sphinx_galleria_<name> = <value>``
     blocks : list of (label, content)
         List where each element is a tuple with the label ('text' or 'code'),
         and content string of block.

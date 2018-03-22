@@ -3,7 +3,7 @@
 Link to other packages
 ======================
 
-Use :mod:`sphinx_gallery` to link to other packages, like
+Use :mod:`sphinx_galleria` to link to other packages, like
 :mod:`numpy`, :mod:`scipy.signal`, and :mod:`matplotlib.pyplot`.
 """
 

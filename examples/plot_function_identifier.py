@@ -11,7 +11,7 @@ functions are called in the script and to which module do they belong.
 # License: BSD 3 clause
 
 import matplotlib.pyplot as plt
-import sphinx_gallery.backreferences as spback
+import sphinx_galleria.backreferences as spback
 
 
 filename = spback.__file__.replace('.pyc', '.py')

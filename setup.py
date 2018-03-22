@@ -8,7 +8,7 @@ Installer Sphinx extension for gallery generator
 import codecs
 import os
 from setuptools import setup, find_packages
-import sphinx_gallery
+import sphinx_galleria
 
 with codecs.open('README.rst', mode='r', encoding='utf-8') as f:
     long_description = f.read()
@@ -26,9 +26,9 @@ setup(
     name="sphinx-gallery",
     description="Sphinx extension to automatically generate an examples gallery",
     long_description=long_description,
-    version=sphinx_gallery.__version__,
+    version=sphinx_galleria.__version__,
     packages=find_packages(),
-    package_data={'sphinx_gallery': ['_static/gallery.css', '_static/no_image.png',
+    package_data={'sphinx_galleria': ['_static/gallery.css', '_static/no_image.png',
                                      '_static/broken_example.png']},
     scripts=['bin/copy_sphinxgallery.sh', 'bin/sphx_glr_python_to_jupyter.py'],
     url="https://github.com/sphinx-gallery/sphinx-gallery",

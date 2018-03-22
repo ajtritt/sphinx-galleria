@@ -15,11 +15,11 @@ import shutil
 import pytest
 from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
-from sphinx_gallery.gen_rst import MixedEncodingStringIO
-from sphinx_gallery import sphinx_compatibility
-from sphinx_gallery.gen_gallery import (check_duplicate_filenames,
+from sphinx_galleria.gen_rst import MixedEncodingStringIO
+from sphinx_galleria import sphinx_compatibility
+from sphinx_galleria.gen_gallery import (check_duplicate_filenames,
                                         collect_gallery_files)
-from sphinx_gallery.utils import _TempDir
+from sphinx_galleria.utils import _TempDir
 
 
 @pytest.fixture
@@ -64,8 +64,8 @@ def config_app(tempdir, conf_file):
 
 @pytest.mark.conf_file(content="""
 import os
-import sphinx_gallery
-extensions = ['sphinx_gallery.gen_gallery']
+import sphinx_galleria
+extensions = ['sphinx_galleria.gen_gallery']
 # General information about the project.
 project = u'Sphinx-Gallery <Tests>'""")
 def test_default_config(config_app):
@@ -77,18 +77,18 @@ def test_default_config(config_app):
     assert cfg.project == "Sphinx-Gallery <Tests>"
     # no duplicate values allowed The config is present already
     with pytest.raises(ExtensionError) as excinfo:
-        config_app.add_config_value('sphinx_gallery_conf', 'x', True)
+        config_app.add_config_value('sphinx_galleria_conf', 'x', True)
     assert 'already present' in str(excinfo.value)
 
 
 @pytest.mark.conf_file(content="""
 import os
-import sphinx_gallery
-extensions = ['sphinx_gallery.gen_gallery']
+import sphinx_galleria
+extensions = ['sphinx_galleria.gen_gallery']
 # General information about the project.
 project = u'Sphinx-Gallery <Tests>'
 
-sphinx_gallery_conf = {
+sphinx_galleria_conf = {
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
 }""")
@@ -107,12 +107,12 @@ def test_no_warning_simple_config(config_app):
 
 @pytest.mark.conf_file(content="""
 import os
-import sphinx_gallery
-extensions = ['sphinx_gallery.gen_gallery']
+import sphinx_galleria
+extensions = ['sphinx_galleria.gen_gallery']
 # General information about the project.
 project = u'Sphinx-Gallery <Tests>'
 
-sphinx_gallery_conf = {
+sphinx_galleria_conf = {
     'mod_example_dir' : os.path.join('modules', 'gen'),
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
@@ -126,7 +126,7 @@ def test_config_old_backreferences_conf(config_app):
 
     cfg = config_app.config
     assert cfg.project == "Sphinx-Gallery <Tests>"
-    assert cfg.sphinx_gallery_conf['backreferences_dir'] == os.path.join(
+    assert cfg.sphinx_galleria_conf['backreferences_dir'] == os.path.join(
         'modules', 'gen')
     build_warn = config_app._warning.getvalue()
 
@@ -137,12 +137,12 @@ def test_config_old_backreferences_conf(config_app):
 
 @pytest.mark.conf_file(content="""
 import os
-import sphinx_gallery
-extensions = ['sphinx_gallery.gen_gallery']
+import sphinx_galleria
+extensions = ['sphinx_galleria.gen_gallery']
 # General information about the project.
 project = u'Sphinx-Gallery <Tests>'
 
-sphinx_gallery_conf = {
+sphinx_galleria_conf = {
     'backreferences_dir': os.path.join('gen_modules', 'backreferences'),
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
@@ -152,7 +152,7 @@ def test_config_backreferences(config_app):
 
     cfg = config_app.config
     assert cfg.project == "Sphinx-Gallery <Tests>"
-    assert cfg.sphinx_gallery_conf['backreferences_dir'] == os.path.join(
+    assert cfg.sphinx_galleria_conf['backreferences_dir'] == os.path.join(
         'gen_modules', 'backreferences')
     build_warn = config_app._warning.getvalue()
     assert build_warn == ""
@@ -189,9 +189,9 @@ def _check_order(config_app, key):
 
 
 @pytest.mark.conf_file(content="""
-import sphinx_gallery
-extensions = ['sphinx_gallery.gen_gallery']
-sphinx_gallery_conf = {
+import sphinx_galleria
+extensions = ['sphinx_galleria.gen_gallery']
+sphinx_galleria_conf = {
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
 }""")
@@ -201,10 +201,10 @@ def test_example_sorting_default(config_app):
 
 
 @pytest.mark.conf_file(content="""
-import sphinx_gallery
-from sphinx_gallery.sorting import FileSizeSortKey
-extensions = ['sphinx_gallery.gen_gallery']
-sphinx_gallery_conf = {
+import sphinx_galleria
+from sphinx_galleria.sorting import FileSizeSortKey
+extensions = ['sphinx_galleria.gen_gallery']
+sphinx_galleria_conf = {
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
     'within_subsection_order': FileSizeSortKey,
@@ -215,10 +215,10 @@ def test_example_sorting_filesize(config_app):
 
 
 @pytest.mark.conf_file(content="""
-import sphinx_gallery
-from sphinx_gallery.sorting import FileNameSortKey
-extensions = ['sphinx_gallery.gen_gallery']
-sphinx_gallery_conf = {
+import sphinx_galleria
+from sphinx_galleria.sorting import FileNameSortKey
+extensions = ['sphinx_galleria.gen_gallery']
+sphinx_galleria_conf = {
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
     'within_subsection_order': FileNameSortKey,
@@ -229,10 +229,10 @@ def test_example_sorting_filename(config_app):
 
 
 @pytest.mark.conf_file(content="""
-import sphinx_gallery
-from sphinx_gallery.sorting import ExampleTitleSortKey
-extensions = ['sphinx_gallery.gen_gallery']
-sphinx_gallery_conf = {
+import sphinx_galleria
+from sphinx_galleria.sorting import ExampleTitleSortKey
+extensions = ['sphinx_galleria.gen_gallery']
+sphinx_galleria_conf = {
     'examples_dirs': 'src',
     'gallery_dirs': 'ex',
     'within_subsection_order': ExampleTitleSortKey,

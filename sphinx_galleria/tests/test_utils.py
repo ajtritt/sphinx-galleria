@@ -9,7 +9,7 @@ Test utility functions
 # License: 3-clause BSD
 
 from __future__ import division, absolute_import, print_function
-import sphinx_gallery.utils as utils
+import sphinx_galleria.utils as utils
 import pytest
 
 def test_replace_py_ipynb():

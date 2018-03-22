@@ -9,10 +9,10 @@ import logging
 
 import pytest
 
-import sphinx_gallery.docs_resolv
-import sphinx_gallery.gen_gallery
-import sphinx_gallery.gen_rst
-from sphinx_gallery import sphinx_compatibility
+import sphinx_galleria.docs_resolv
+import sphinx_galleria.gen_gallery
+import sphinx_galleria.gen_rst
+from sphinx_galleria import sphinx_compatibility
 
 
 Params = collections.namedtuple('Params', 'args kwargs')
@@ -45,29 +45,29 @@ class FakeSphinxApp:
 
 @pytest.fixture
 def fakesphinxapp():
-    orig_app = sphinx_gallery.sphinx_compatibility._app
-    sphinx_gallery.sphinx_compatibility._app = app = FakeSphinxApp()
+    orig_app = sphinx_galleria.sphinx_compatibility._app
+    sphinx_galleria.sphinx_compatibility._app = app = FakeSphinxApp()
     try:
         yield app
     finally:
-        sphinx_gallery.sphinx_compatibility._app = orig_app
+        sphinx_galleria.sphinx_compatibility._app = orig_app
 
 
 @pytest.fixture
 def log_collector():
-    orig_dr_logger = sphinx_gallery.docs_resolv.logger
-    orig_gg_logger = sphinx_gallery.gen_gallery.logger
-    orig_gr_logger = sphinx_gallery.gen_rst.logger
+    orig_dr_logger = sphinx_galleria.docs_resolv.logger
+    orig_gg_logger = sphinx_galleria.gen_gallery.logger
+    orig_gr_logger = sphinx_galleria.gen_rst.logger
     app = FakeSphinxApp()
-    sphinx_gallery.docs_resolv.logger = app
-    sphinx_gallery.gen_gallery.logger = app
-    sphinx_gallery.gen_rst.logger = app
+    sphinx_galleria.docs_resolv.logger = app
+    sphinx_galleria.gen_gallery.logger = app
+    sphinx_galleria.gen_rst.logger = app
     try:
         yield app
     finally:
-        sphinx_gallery.docs_resolv.logger = orig_dr_logger
-        sphinx_gallery.gen_gallery.logger = orig_gg_logger
-        sphinx_gallery.gen_rst.logger = orig_gr_logger
+        sphinx_galleria.docs_resolv.logger = orig_dr_logger
+        sphinx_galleria.gen_gallery.logger = orig_gg_logger
+        sphinx_galleria.gen_rst.logger = orig_gr_logger
 
 
 @pytest.fixture
@@ -89,10 +89,10 @@ path = os.path.join('a','b')
 
 a = 'hei\xc3\x9f'  # Unicode string
 
-import sphinx_gallery.back_references as br
+import sphinx_galleria.back_references as br
 br.identify_names
 
-from sphinx_gallery.back_references import identify_names
+from sphinx_galleria.back_references import identify_names
 identify_names
 
 """

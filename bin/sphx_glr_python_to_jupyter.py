@@ -13,7 +13,7 @@ scripts into Jupyter Notebooks.
 
 from __future__ import division, absolute_import, print_function
 
-from sphinx_gallery.notebook import python_to_jupyter_cli
+from sphinx_galleria.notebook import python_to_jupyter_cli
 
 
 if __name__ == '__main__':
